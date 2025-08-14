@@ -1,0 +1,18 @@
+<div class="container"></div>
+    <div class="page-header">
+        <h1 class="page-title">Something went wrong</h1>
+        <p class="page-subtitle">We encountered an unexpected error</p>
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <div class="alert alert-error">
+                <%= error %>
+            </div>
+            <div class="flex gap-3">
+                <a href="/" class="btn btn-primary">Go Home</a>
+                <button onclick="window.history.back()" class="btn btn-outline">Go Back</button>
+            </div>
+        </div>
+    </div>
+</div>

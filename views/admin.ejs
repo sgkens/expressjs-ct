@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="page-header">
+        <h1 class="page-title">Administration Panel</h1>
+        <p class="page-subtitle">Manage users and system settings</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="stat-card">
+            <div class="stat-title">Total Users</div>
+            <div class="stat-value">
+                <%= users.length %>
+            </div>
+            <p>Registered accounts</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-title">Admin Users</div>
+            <div class="stat-value">
+                <%= users.filter(u=> u.account_type === 'admin').length %>
+            </div>
+            <p>Administrator accounts</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-title">Regular Users</div>
+            <div class="stat-value">
+                <%= users.filter(u=> u.account_type === 'user').length %>
+            </div>
+            <p>Standard user accounts</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">User Management</h2>
+        </div>
+        <div class="card-content">
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Display Name</th>
+                            <th>Account Type</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% users.forEach(function(u) { %>
+                            <tr>
+                                <td>
+                                    <%= u.id %>
+                                </td>
+                                <td>
+                                    <%= u.username %>
+                                </td>
+                                <td>
+                                    <%= u.display_name %>
+                                </td>
+                                <td>
+                                    <span
+                                        class="<%= u.account_type === 'admin' ? 'stat-change positive' : 'stat-change' %>">
+                                        <%= u.account_type %>
+                                    </span>
+                                </td>
+                                <td>
+                                    <%= new Date(u.created_at).toLocaleDateString() %>
+                                </td>
+                                <td>
+                                    <div class="flex gap-2">
+                                        <% if (u.id !==user.id) { %>
+                                            <button class="btn btn-sm btn-outline"
+                                                onclick="editUser(<%= u.id %>)">Edit</button>
+                                            <button class="btn btn-sm btn-danger"
+                                                onclick="deleteUser(<%= u.id %>, '<%= u.username %>')">Delete</button>
+                                            <% } else { %>
+                                                <span class="text-muted">You</span>
+                                                <% } %>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

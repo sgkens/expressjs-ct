@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="page-header">
+        <h1 class="page-title">Welcome to Express Template</h1>
+        <p class="page-subtitle">A solid foundation for building professional web applications</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="stat-card">
+            <div class="stat-title">Security First</div>
+            <div class="stat-value">🔒</div>
+            <p>Built-in SQL injection protection, bcrypt password hashing, and session security.</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-title">Database Flexible</div>
+            <div class="stat-value">💾</div>
+            <p>Works with MySQL, MariaDB, PostgreSQL, and SQLite with sanitized queries.</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-title">Detailed Logging</div>
+            <div class="stat-value">📊</div>
+            <p>Comprehensive logging system with console and file output capabilities.</p>
+        </div>
+    </div>
+
+    <% if (typeof user !=='undefined' && user) { %>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Welcome back, <%= user.display_name %>!</h2>
+            </div>
+            <div class="card-content">
+                <p>You're logged in as a <strong>
+                        <%= user.account_type %>
+                    </strong> user.</p>
+                <div class="flex gap-3 mt-4">
+                    <a href="/dashboard" class="btn btn-primary">Go to Dashboard</a>
+                    <a href="/profile" class="btn btn-outline">View Profile</a>
+                </div>
+            </div>
+        </div>
+        <% } else { %>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Get Started</h2>
+                </div>
+                <div class="card-content">
+                    <p>Create an account or login to access the dashboard and all features.</p>
+                    <div class="flex gap-3 mt-4">
+                        <a href="/register" class="btn btn-primary">Create Account</a>
+                        <a href="/login" class="btn btn-outline">Login</a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+</div>

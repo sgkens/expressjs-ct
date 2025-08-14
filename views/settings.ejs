@@ -1,0 +1,55 @@
+<div class="container-sm"></div>
+<div class="page-header">
+    <h1 class="page-title">Settings</h1>
+    <p class="page-subtitle">Configure your application preferences</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Application Settings</h2>
+    </div>
+    <div class="card-content">
+        <div class="form-group">
+            <label for="theme" class="form-label">Theme Preference</label>
+            <select id="theme" class="form-select">
+                <option value="auto">Auto (System)</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="notifications" class="form-label">Email Notifications</label>
+            <select id="notifications" class="form-select">
+                <option value="all">All notifications</option>
+                <option value="important">Important only</option>
+                <option value="none">None</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="language" class="form-label">Language</label>
+            <select id="language" class="form-select">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary w-full" onclick="saveSettings()">Save Settings</button>
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-header">
+        <h2 class="card-title">Account Actions</h2>
+    </div>
+    <div class="card-content">
+        <div class="flex flex-col gap-3">
+            <a href="/profile" class="btn btn-outline">Edit Profile</a>
+            <button class="btn btn-warning" onclick="exportData()">Export My Data</button>
+            <button class="btn btn-danger" onclick="confirmDeleteAccount()">Delete Account</button>
+        </div>
+    </div>
+</div>
+</div>

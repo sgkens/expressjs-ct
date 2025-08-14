@@ -1,93 +1,335 @@
-# Expressjs Ct
+# Express.js Website Template
 
+A robust, secure Express.js website template built for real men who code with raw CSS and appreciate solid architecture.
 
+## 🚀 Features
 
-## Getting started
+### Core Functionality
+- **Multi-Database Support**: Works with MySQL, MariaDB, PostgreSQL, and SQLite
+- **Secure Authentication**: bcrypt password hashing, session management, rate limiting
+- **SQL Injection Protection**: Parameterized queries and input sanitization
+- **Role-Based Access Control**: Admin and user permission levels
+- **Comprehensive Logging**: Dedicated logging system with console and file output
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### User Management
+- User registration and login
+- Profile management with password updates
+- Dashboard with user statistics
+- Admin panel for user management
+- Settings page for preferences
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### Security Features
+- Password complexity validation
+- Session security with regeneration
+- Rate limiting for sensitive operations
+- Input sanitization and validation
+- CSRF protection ready
+- Helmet.js security headers
 
-## Add your files
+### UI/UX
+- **Raw CSS** - No frameworks, pure CSS craftsmanship
+- Responsive design
+- Dark/light theme support
+- Clean, professional interface
+- Form validation with real-time feedback
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## 📁 Project Structure
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/phellams/expressjs-ct.git
-git branch -M main
-git push -uf origin main
+express-website-template/
+├── server.js                 # Main application file
+├── package.json              # Dependencies and scripts
+├── .env                      # Environment configuration
+├── database/
+│   ├── db.js                 # Database abstraction layer
+│   └── app.db                # SQLite database (auto-created)
+├── middleware/
+│   └── auth.js               # Authentication middleware
+├── utils/
+│   └── logger.js             # Logging utilities
+├── public/
+│   ├── css/
+│   │   └── style.css         # Raw CSS styles
+│   └── js/
+│       └── main.js           # Client-side JavaScript
+├── views/
+│   ├── layout.ejs            # Main layout template
+│   ├── index.ejs             # Home page
+│   ├── login.ejs             # Login page
+│   ├── register.ejs          # Registration page
+│   ├── dashboard.ejs         # User dashboard
+│   ├── profile.ejs           # User profile
+│   ├── settings.ejs          # User settings
+│   ├── admin.ejs             # Admin panel
+│   ├── 404.ejs               # 404 error page
+│   └── error.ejs             # General error page
+└── logs/                     # Log files (auto-created)
 ```
 
-## Integrate with your tools
+## 🛠️ Installation
 
-- [ ] [Set up project integrations](https://gitlab.com/phellams/expressjs-ct/-/settings/integrations)
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+- Database server (optional - SQLite works out of the box)
 
-## Collaborate with your team
+### Quick Start
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+1. **Clone or download the template files**
 
-## Test and Deploy
+2. **Install dependencies**
+```bash
+npm install
+```
 
-Use the built-in continuous integration in GitLab.
+3. **Configure environment variables**
+Copy the environment configuration from the template and create a `.env` file:
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+```env
+# Server Configuration
+PORT=3000
+NODE_ENV=development
 
-***
+# Session Configuration
+SESSION_SECRET=your-super-secret-key-change-this-in-production
 
-# Editing this README
+# Database Configuration (SQLite is default)
+DB_TYPE=sqlite
+DB_PATH=./database/app.db
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+# Logging Configuration
+LOG_LEVEL=INFO
+ENABLE_FILE_LOGGING=true
+LOG_DIRECTORY=./logs
+```
 
-## Suggestions for a good README
+4. **Start the application**
+```bash
+# Development mode with auto-restart
+npm run dev
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+# Production mode
+npm start
+```
 
-## Name
-Choose a self-explaining name for your project.
+5. **Access the application**
+Open your browser and navigate to `http://localhost:3000`
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+### Default Admin Account
+The system automatically creates a default admin account:
+- **Username**: `admin`
+- **Password**: `admin123`
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+**⚠️ Change this password immediately in production!**
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+## 🗄️ Database Configuration
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+### SQLite (Default)
+No additional setup required. The database file will be created automatically.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+```env
+DB_TYPE=sqlite
+DB_PATH=./database/app.db
+```
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+### MySQL/MariaDB
+```env
+DB_TYPE=mysql
+DB_HOST=localhost
+DB_USER=your_username
+DB_PASSWORD=your_password
+DB_NAME=your_database_name
+```
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+### PostgreSQL
+```env
+DB_TYPE=postgres
+DB_HOST=localhost
+DB_USER=postgres
+DB_PASSWORD=your_password
+DB_NAME=your_database_name
+DB_PORT=5432
+```
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+## 🔒 Security Features
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+### Password Security
+- Passwords are hashed using bcrypt with 12 rounds
+- Minimum 6 character requirement
+- Password confirmation validation
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+### SQL Injection Protection
+- All queries use parameterized statements
+- Input sanitization on all user inputs
+- Validation using express-validator
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+### Session Security
+- Secure session configuration
+- Session regeneration for security
+- Configurable session timeouts
 
-## License
-For open source projects, say how it is licensed.
+### Rate Limiting
+- Login attempt rate limiting (5 attempts per 15 minutes)
+- Configurable rate limiting for sensitive operations
+- IP-based tracking
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+### Input Validation
+- Server-side validation on all forms
+- Client-side validation for better UX
+- XSS protection through input escaping
+
+## 📊 Logging System
+
+The application includes a comprehensive logging system:
+
+### Log Levels
+- **ERROR**: Critical errors that need immediate attention
+- **WARN**: Warning messages for potential issues
+- **INFO**: General information messages
+- **DEBUG**: Detailed debugging information
+
+### Log Types
+- **Security**: Authentication, authorization, and security events
+- **Performance**: Timing and performance metrics
+- **Database**: Database operations and queries
+- **Authentication**: Login/logout events
+- **Request**: HTTP request logging
+
+### Configuration
+```env
+LOG_LEVEL=INFO                # Minimum log level to output
+ENABLE_FILE_LOGGING=true      # Enable/disable file logging
+LOG_DIRECTORY=./logs          # Directory for log files
+```
+
+### Log Features
+- Console output with colors
+- File logging with daily rotation
+- Structured logging with metadata
+- Performance timing utilities
+- Error tracking and reporting
+
+## 🎨 Styling and Theming
+
+### CSS Architecture
+The template uses pure CSS with CSS custom properties (variables) for theming:
+
+- **No CSS frameworks** - Pure, handcrafted CSS
+- **CSS Variables** for easy theming
+- **Responsive design** with mobile-first approach
+- **Dark/light theme** support
+- **Component-based** styling approach
+
+### Customization
+Modify `/public/css/style.css` to customize:
+- Colors and themes
+- Typography
+- Layout and spacing
+- Component styles
+
+### Theme Variables
+```css
+:root {
+  --primary-color: #2563eb;
+  --background-color: #f8fafc;
+  --text-color: #1e293b;
+  /* ... more variables */
+}
+```
+
+## 🚀 Deployment
+
+### Environment Setup
+1. Set `NODE_ENV=production`
+2. Use a strong `SESSION_SECRET`
+3. Configure your production database
+4. Set up HTTPS and update session cookie settings
+5. Configure logging for production
+
+### Production Considerations
+- Use a process manager like PM2
+- Set up reverse proxy (nginx/Apache)
+- Configure SSL certificates
+- Set up database backups
+- Configure log rotation
+- Set up monitoring and alerting
+
+### Docker Deployment
+Create a `Dockerfile`:
+```dockerfile
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+## 🔧 API Endpoints
+
+### Public Routes
+- `GET /` - Home page
+- `GET /login` - Login page
+- `POST /login` - User authentication
+- `GET /register` - Registration page
+- `POST /register` - User registration
+
+### Protected Routes
+- `GET /dashboard` - User dashboard
+- `GET /profile` - User profile
+- `POST /profile` - Update profile
+- `GET /settings` - User settings
+- `POST /logout` - User logout
+
+### Admin Routes
+- `GET /admin` - Admin panel
+- `PUT /admin/users/:id` - Update user
+- `DELETE /admin/users/:id` - Delete user
+
+### Utility Routes
+- `GET /health` - Health check endpoint
+
+## 🧪 Testing
+
+### Manual Testing
+1. Register a new account
+2. Login with the account
+3. Test profile updates
+4. Test password changes
+5. Test admin functionality (if admin user)
+
+### Security Testing
+- Test SQL injection attempts
+- Test XSS attempts
+- Test rate limiting
+- Test session security
+- Test input validation
+
+## 🤝 Contributing
+
+This is a template designed to be customized for your specific needs. Feel free to:
+- Add new features
+- Modify the styling
+- Extend the database schema
+- Add new user roles
+- Implement additional security measures
+
+## 📝 License
+
+This template is provided as-is for educational and commercial use. Modify as needed for your projects.
+
+## 💪 Built by Real Developers
+
+This template was built with:
+- **Raw CSS** - No training wheels
+- **Vanilla JavaScript** - No unnecessary frameworks  
+- **Secure practices** - Production-ready security
+- **Clean architecture** - Maintainable and scalable
+- **Detailed logging** - Professional debugging and monitoring
+
+Perfect for developers who appreciate clean, efficient code and understand that sometimes the best solutions are built from scratch.
+
+---
+
+**Ready to build something awesome? Get coding! 🚀**

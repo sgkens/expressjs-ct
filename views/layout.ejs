@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= typeof title !=='undefined' ? title + ' - ' : '' %>Express Template
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">Express Template</a>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="/" class="nav-link">Home</a></li>
+                        <% if (typeof user !=='undefined' && user) { %>
+                            <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                            <li><a href="/profile" class="nav-link">Profile</a></li>
+                            <li><a href="/settings" class="nav-link">Settings</a></li>
+                            <% if (user.account_type==='admin' ) { %>
+                                <li><a href="/admin" class="nav-link">Admin</a></li>
+                                <% } %>
+                                    <li>
+                                        <form action="/logout" method="POST" style="display: inline;">
+                                            <button type="submit" class="btn btn-outline btn-sm">Logout</button>
+                                        </form>
+                                    </li>
+                                    <li><span class="nav-link">Hello, <%= user.display_name %></span></li>
+                                    <% } else { %>
+                                        <li><a href="/login" class="nav-link">Login</a></li>
+                                        <li><a href="/register" class="nav-link">Register</a></li>
+                                        <% } %>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <%- body %>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Express Template. Built with raw CSS like real men do.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
